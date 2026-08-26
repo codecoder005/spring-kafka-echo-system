@@ -12,3 +12,7 @@ spring:
         schema.registry.url: "http://127.0.0.1:8081"
 
 topic.name: com-popcorn-refund
+bootui:
+  enabled: on
+  mcp:
+    enabled: on

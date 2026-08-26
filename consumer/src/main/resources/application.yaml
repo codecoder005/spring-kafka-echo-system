@@ -20,3 +20,8 @@ server:
 
 topic:
   name: com-popcorn-refund
+
+bootui:
+  enabled: on
+  mcp:
+    enabled: on
