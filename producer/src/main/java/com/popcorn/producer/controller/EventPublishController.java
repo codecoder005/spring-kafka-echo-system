@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/v1/events")
 @RequiredArgsConstructor
@@ -22,6 +24,8 @@ public class EventPublishController {
     public ResponseEntity<?> publishEvent(@RequestBody RefundEvent refundEvent) {
         log.info("Publishing event to Kafka");
         eventPublishService.publish(refundEvent);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(Map.of("status", "ok"));
     }
 }

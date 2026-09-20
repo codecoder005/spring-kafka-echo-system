@@ -43,6 +43,7 @@
 	<properties>
 		<java.version>25</java.version>
 		<apache.avro.version>1.12.1</apache.avro.version>
+		<bootui.version>1.17.0</bootui.version>
 	</properties>
 
 	<dependencies>
@@ -59,7 +60,7 @@
 		<dependency>
 			<groupId>com.julien-dubois.bootui</groupId>
 			<artifactId>bootui-spring-boot-starter</artifactId>
-			<version>1.14.1</version>
+			<version>${bootui.version}</version>
 		</dependency>
 
 		<dependency>
