@@ -1,7 +1,7 @@
 services:
 
   broker:
-    image: confluentinc/cp-server:8.2.0
+    image: confluentinc/cp-server:8.2.4
     hostname: broker
     container_name: broker
     ports:
@@ -49,7 +49,7 @@ services:
       KAFKA_CONFLUENT_CONSUMER_LAG_EMITTER_ENABLED: "true"
 
   schema-registry:
-    image: confluentinc/cp-schema-registry:8.2.0
+    image: confluentinc/cp-schema-registry:8.2.4
     hostname: schema-registry
     container_name: schema-registry
     depends_on:
@@ -62,7 +62,7 @@ services:
       SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8081
 
   connect:
-    image: cnfldemos/cp-server-connect-datagen:0.6.4-7.6.0
+    image: cnfldemos/cp-server-connect-datagen:0.6.7-8.0.0
     hostname: connect
     container_name: connect
     depends_on:
@@ -85,13 +85,13 @@ services:
       CONNECT_VALUE_CONVERTER: io.confluent.connect.avro.AvroConverter
       CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL: http://schema-registry:8081
       # CLASSPATH required due to CC-2422
-      CLASSPATH: /usr/share/java/monitoring-interceptors/monitoring-interceptors-8.2.0.jar
+      CLASSPATH: /usr/share/java/monitoring-interceptors/monitoring-interceptors-8.2.4.jar
       CONNECT_PRODUCER_INTERCEPTOR_CLASSES: "io.confluent.monitoring.clients.interceptor.MonitoringProducerInterceptor"
       CONNECT_CONSUMER_INTERCEPTOR_CLASSES: "io.confluent.monitoring.clients.interceptor.MonitoringConsumerInterceptor"
       CONNECT_PLUGIN_PATH: "/usr/share/java,/usr/share/confluent-hub-components"
 
   prometheus:
-    image: confluentinc/cp-enterprise-prometheus:2.5.0
+    image: confluentinc/cp-enterprise-prometheus:2.6.0
     hostname: cp-enterprise-prometheus
     container_name: prometheus
     volumes:
@@ -104,7 +104,7 @@ services:
       LOG_FILE: "/dev/null"
 
   alertmanager:
-    image: confluentinc/cp-enterprise-alertmanager:2.5.0
+    image: confluentinc/cp-enterprise-alertmanager:2.6.0
     hostname: cp-enterprise-alertmanager
     container_name: alertmanager
     depends_on:
@@ -119,7 +119,7 @@ services:
       LOG_FILE: "/dev/null"
 
   control-center:
-    image: confluentinc/cp-enterprise-control-center-next-gen:2.5.0
+    image: confluentinc/cp-enterprise-control-center-next-gen:2.6.0
     hostname: control-center
     container_name: control-center
     depends_on:
@@ -152,7 +152,7 @@ services:
       PORT: 9021
 
   ksqldb-server:
-    image: confluentinc/cp-ksqldb-server:8.2.0
+    image: confluentinc/cp-ksqldb-server:8.2.4
     hostname: ksqldb-server
     container_name: ksqldb-server
     depends_on:
